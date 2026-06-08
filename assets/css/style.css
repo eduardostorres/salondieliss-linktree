@@ -1,0 +1,462 @@
+/* ==========================================================================
+   RESET BÁSICO
+   ==========================================================================
+
+   Normaliza el comportamiento de márgenes y padding
+   entre navegadores.
+
+   ========================================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+
+
+/* ==========================================================================
+   VARIABLES DEL SISTEMA DE DISEÑO
+   ==========================================================================
+
+   Paleta Nude Rosé utilizada en toda la identidad visual.
+
+   Si deseas cambiar la línea gráfica,
+   modifica únicamente estas variables.
+
+   ========================================================================== */
+
+:root{
+
+    --color-primary:#D6AAA0;
+
+    --color-primary-dark:#C99487;
+
+    --color-text:#5B4A45;
+
+    --color-text-soft:#9D8076;
+
+    --color-card:rgba(255,255,255,.70);
+
+    --color-card-border:rgba(255,255,255,.75);
+
+}
+
+
+
+/* ==========================================================================
+   FONDOS DECORATIVOS
+   ==========================================================================
+
+   Blobs difuminados que aportan profundidad visual.
+
+   No contienen contenido funcional.
+
+   ========================================================================== */
+
+.background-blob{
+
+    position:fixed;
+
+    width:350px;
+    height:350px;
+
+    border-radius:9999px;
+
+    filter:blur(100px);
+
+    pointer-events:none;
+
+    z-index:-1;
+
+}
+
+.top-blob{
+
+    top:-150px;
+    left:-150px;
+
+    background:
+        rgba(214,170,160,.35);
+
+}
+
+.bottom-blob{
+
+    right:-150px;
+    bottom:-150px;
+
+    background:
+        rgba(214,170,160,.25);
+
+}
+
+
+
+/* ==========================================================================
+   TARJETA PRINCIPAL
+   ==========================================================================
+
+   Componente visual más importante del proyecto.
+
+   Funciones:
+   - Agrupar contenido.
+   - Generar foco visual.
+   - Aplicar efecto glassmorphism premium.
+
+   ========================================================================== */
+
+.card{
+
+    width:100%;
+
+    max-width:480px;
+
+    padding:2.5rem;
+
+    border-radius:40px;
+
+    background:
+        var(--color-card);
+
+    backdrop-filter:
+        blur(24px);
+
+    border:
+        1px solid var(--color-card-border);
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.08);
+
+}
+
+
+
+/* ==========================================================================
+   IDENTIDAD DE MARCA
+   ==========================================================================
+
+   Elementos relacionados con el nombre del salón.
+
+   ========================================================================== */
+
+.brand-title{
+
+    font-family:
+        'Cormorant Garamond',
+        serif;
+
+    font-size:
+        clamp(
+            4rem,
+            8vw,
+            5rem
+        );
+
+    line-height:1;
+
+    color:
+        var(--color-text);
+
+}
+
+.brand-subtitle{
+
+    margin-top:
+        .75rem;
+
+    font-size:
+        .75rem;
+
+    letter-spacing:
+        .35em;
+
+    text-transform:
+        uppercase;
+
+    color:
+        var(--color-text-soft);
+
+}
+
+
+
+/* ==========================================================================
+   BOTÓN PRINCIPAL (CTA)
+   ==========================================================================
+
+   Objetivo:
+   Convertir visitas en citas.
+
+   Debe ser el elemento visual dominante.
+
+   ========================================================================== */
+
+.cta-button{
+
+    width:100%;
+
+    height:68px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:.75rem;
+
+    border-radius:999px;
+
+    text-decoration:none;
+
+    color:white;
+
+    font-weight:600;
+
+    letter-spacing:.04em;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--color-primary),
+            var(--color-primary-dark)
+        );
+
+    box-shadow:
+        0 16px 40px rgba(201,148,135,.35);
+
+    transition:
+        all .30s ease;
+
+}
+
+.cta-button:hover{
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 24px 50px rgba(201,148,135,.40);
+
+}
+
+.cta-button:active{
+
+    transform:
+        scale(.98);
+
+}
+
+
+
+/* ==========================================================================
+   ICONO DEL CTA
+   ========================================================================== */
+
+.cta-button i{
+
+    font-size:
+        1.3rem;
+
+}
+
+
+
+/* ==========================================================================
+   CONTENEDOR DE REDES SOCIALES
+   ==========================================================================
+
+   Mantiene una distribución horizontal
+   uniforme para todos los iconos.
+
+   ========================================================================== */
+
+.social-container{
+
+    margin-top:2rem;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:1rem;
+
+}
+
+
+
+/* ==========================================================================
+   BOTONES SOCIALES
+   ==========================================================================
+
+   Diseño minimalista premium.
+
+   Se utilizan únicamente iconos para
+   reducir ruido visual.
+
+   ========================================================================== */
+
+.social-button{
+
+    width:56px;
+
+    height:56px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:999px;
+
+    text-decoration:none;
+
+    background:white;
+
+    color:#A9897E;
+
+    font-size:1.15rem;
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,.06);
+
+    transition:
+        all .25s ease;
+
+}
+
+.social-button:hover{
+
+    transform:
+        translateY(-4px);
+
+    color:
+        var(--color-primary-dark);
+
+    box-shadow:
+        0 14px 30px rgba(0,0,0,.10);
+
+}
+
+
+
+/* ==========================================================================
+   MAPA
+   ==========================================================================
+
+   Componente de ubicación.
+
+   Se integra visualmente con el diseño
+   mediante esquinas redondeadas.
+
+   ========================================================================== */
+
+.map{
+
+    width:100%;
+
+    height:280px;
+
+    border:none;
+
+    border-radius:28px;
+
+    overflow:hidden;
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.08);
+
+}
+
+
+
+/* ==========================================================================
+   ACCESIBILIDAD
+   ==========================================================================
+
+   Mejora navegación mediante teclado.
+
+   ========================================================================== */
+
+*:focus-visible{
+
+    outline:
+        3px solid var(--color-primary);
+
+    outline-offset:
+        4px;
+
+}
+
+
+
+/* ==========================================================================
+   ANIMACIÓN DE ENTRADA
+   ==========================================================================
+
+   Utilizada por JavaScript para revelar
+   elementos cuando aparecen en pantalla.
+
+   ========================================================================== */
+
+.fade-in{
+
+    opacity:0;
+
+    transform:
+        translateY(20px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+
+}
+
+.fade-in.visible{
+
+    opacity:1;
+
+    transform:
+        translateY(0);
+
+}
+
+
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ==========================================================================
+
+   Ajustes específicos para móviles.
+
+   ========================================================================== */
+
+@media (max-width:640px){
+
+    .card{
+
+        padding:2rem;
+
+        border-radius:32px;
+
+    }
+
+    .social-button{
+
+        width:52px;
+
+        height:52px;
+
+    }
+
+    .map{
+
+        height:240px;
+
+    }
+
+}
