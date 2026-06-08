@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+    <!-- ===================================================== -->
+    <!-- CONFIGURACIÓN BÁSICA -->
+    <!-- ===================================================== -->
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>SalonDiEliss | Beauty Studio</title>
+
+    <meta
+        name="description"
+        content="SalonDiEliss. Tu espacio favorito para consentirte, relajarte y realzar tu belleza."
+    />
+
+    <meta name="theme-color" content="#D6AAA0" />
+
+    <!-- ===================================================== -->
+    <!-- GOOGLE FONTS -->
+    <!-- ===================================================== -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- ===================================================== -->
+    <!-- TAILWIND CSS CDN -->
+    <!-- ===================================================== -->
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- ===================================================== -->
+    <!-- FONT AWESOME (ICONOS REDES SOCIALES) -->
+    <!-- ===================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <!-- ===================================================== -->
+    <!-- CONFIGURACIÓN TAILWIND -->
+    <!-- ===================================================== -->
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        brand: ['Cormorant Garamond', 'serif'],
+                        body: ['Montserrat', 'sans-serif']
+                    },
+                    colors: {
+                        nude: {
+                            50: '#FDF9F8',
+                            100: '#F8F1EE',
+                            200: '#F2E4DF',
+                            300: '#E7D1C9',
+                            400: '#DDB8AB',
+                            500: '#D6AAA0',
+                            600: '#C99487',
+                            700: '#AF7C6F'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+</head>
+
+<body
+    class="
+        font-body
+        min-h-screen
+        overflow-x-hidden
+
+        bg-gradient-to-br
+        from-[#FDF9F8]
+        via-[#F8F1EE]
+        to-[#F2E4DF]
+    "
+>
+
+    <!-- ===================================================== -->
+    <!-- FONDOS DECORATIVOS (BLURS ROSA NUDE) -->
+    <!-- ===================================================== -->
+
+    <div
+        class="
+            fixed
+            top-[-150px]
+            left-[-150px]
+            w-[350px]
+            h-[350px]
+            rounded-full
+            bg-nude-300/40
+            blur-3xl
+            -z-10
+        "
+    ></div>
+
+    <div
+        class="
+            fixed
+            bottom-[-150px]
+            right-[-150px]
+            w-[350px]
+            h-[350px]
+            rounded-full
+            bg-nude-400/30
+            blur-3xl
+            -z-10
+        "
+    ></div>
+
+    <!-- ===================================================== -->
+    <!-- CONTENEDOR PRINCIPAL -->
+    <!-- ===================================================== -->
+
+    <main
+        class="
+            min-h-screen
+            flex
+            items-center
+            justify-center
+            px-6
+            py-10
+        "
+    >
+
+        <!-- ================================================= -->
+        <!-- TARJETA PRINCIPAL -->
+        <!-- ================================================= -->
+
+        <section
+            class="
+                w-full
+                max-w-xl
+
+                rounded-[40px]
+
+                bg-white/70
+                backdrop-blur-xl
+
+                border
+                border-white/70
+
+                shadow-[0_20px_60px_rgba(0,0,0,0.08)]
+
+                p-8
+                md:p-10
+            "
+        >
+
+            <!-- ============================================= -->
+            <!-- LOGO / NOMBRE -->
+            <!-- ============================================= -->
+
+            <header class="text-center">
+
+                <h1
+                    class="
+                        font-brand
+                        text-6xl
+                        md:text-7xl
+                        text-[#5B4A45]
+                    "
+                >
+                    SalonDiEliss
+                </h1>
+
+                <p
+                    class="
+                        mt-3
+
+                        uppercase
+                        tracking-[0.35em]
+
+                        text-xs
+                        text-[#9D8076]
+                    "
+                >
+                    By Elisa Torres
+                </p>
+
+            </header>
+
+            <!-- ============================================= -->
+            <!-- REDES SOCIALES -->
+            <!-- SOLO ICONOS PARA UN LOOK MÁS PREMIUM -->
+            <!-- ============================================= -->
+
+            <div
+                class="
+                    mt-8
+
+                    flex
+                    items-center
+                    justify-center
+
+                    gap-2
+                "
+            >
+
+                <!-- Instagram -->
+
+                <a
+                    href="https://instagram.com/salondieliss"
+                    target="_blank"
+                    aria-label="Instagram"
+
+                    class="
+                        w-16
+                        h-16
+
+                        flex
+                        items-center
+                        justify-center
+
+                        rounded-full
+
+                        bg-white
+
+                        text-[#A9897E]
+
+                        shadow-md
+
+                        transition-all
+                        duration-300
+
+                        hover:-translate-y-1
+                        hover:text-nude-600
+                    "
+                >
+                    <i class="fa-brands fa-instagram text-2xl"></i>
+                </a>
+
+                <!-- Facebook -->
+
+                <a
+                    href="https://facebook.com/salondieliss"
+                    target="_blank"
+                    aria-label="Facebook"
+
+                    class="
+                        w-16
+                        h-16
+
+                        flex
+                        items-center
+                        justify-center
+
+                        rounded-full
+
+                        bg-white
+
+                        text-[#A9897E]
+
+                        shadow-md
+
+                        transition-all
+                        duration-300
+
+                        hover:-translate-y-1
+                        hover:text-nude-600
+                    "
+                >
+                    <i class="fa-brands fa-facebook-f txlt-2xl"></i>
+                </a>
+
+                <!-- TikTok -->
+
+                <a
+                    href="https://tiktok.com/@salondieliss"
+                    target="_blank"
+                    aria-label="TikTok"
+
+                    class="
+                        w-16
+                        h-16
+
+                        flex
+                        items-center
+                        justify-center
+
+                        rounded-full
+
+                        bg-white
+
+                        text-[#A9897E]
+
+                        shadow-md
+
+                        transition-all
+                        duration-300
+
+                        hover:-translate-y-1
+                        hover:text-nude-600
+                    "
+                >
+                    <i class="fa-brands fa-tiktok text-2xl"></i>
+                </a>
+
+                <!-- X -->
+
+                <a
+                    href="https://x.com/salondieliss"
+                    target="_blank"
+                    aria-label="X"
+
+                    class="
+                        w-16
+                        h-16
+
+                        flex
+                        items-center
+                        justify-center
+
+                        rounded-full
+
+                        bg-white
+
+                        text-[#A9897E]
+
+                        shadow-md
+
+                        transition-all
+                        duration-300
+
+                        hover:-translate-y-1
+                        hover:text-nude-600
+                    "
+                >
+                    <i class="fa-brands fa-x-twitter text-2xl"></i>
+                </a>
+
+                
+<!-- threads -->
+
+                <a
+                    href="https://www.threads.com/@salondieliss"
+                    target="_blank"
+                    aria-label="Threads"
+
+                    class="
+                        w-16
+                        h-16
+
+                        flex
+                        items-center
+                        justify-center
+
+                        rounded-full
+
+                        bg-white
+
+                        text-[#A9897E]
+
+                        shadow-md
+
+                        transition-all
+                        duration-300
+
+                        hover:-translate-y-1
+                        hover:text-nude-600
+                    "
+                >
+                    <i class="fa-brands fa-threads text-2xl"></i>
+                </a>
+
+                <!-- Spotify -->
+
+                <a
+                    href="https://open.spotify.com/playlist/1gId0SA2fCrnky4HwcUb24"
+                    target="_blank"
+                    aria-label="Spotify"
+
+                    class="
+                        w-16
+                        h-16
+
+                        flex
+                        items-center
+                        justify-center
+
+                        rounded-full
+
+                        bg-white
+
+                        text-[#A9897E]
+
+                        shadow-md
+
+                        transition-all
+                        duration-300
+
+                        hover:-translate-y-1
+                        hover:text-nude-600
+                    "
+                >
+                    <i class="fa-brands fa-spotify text-2xl"></i>
+                </a>
+
+            </div>
+
+            
+
+            <!-- ============================================= -->
+            <!-- BOTÓN PRINCIPAL -->
+            <!-- ============================================= -->
+
+            <div class="mt-10">
+
+                <a
+                    href="https://wa.me/525558186483"
+                    target="_blank"
+                    rel="noopener noreferrer"
+
+                    class="
+                        group
+
+                        w-full
+                        h-16
+
+                        flex
+                        items-center
+                        justify-center
+                        gap-3
+
+                        rounded-full
+
+                        bg-gradient-to-r
+                        from-nude-500
+                        to-nude-600
+
+                        text-white
+                        font-semibold
+                        tracking-wide
+
+                        shadow-lg
+
+                        transition-all
+                        duration-300
+
+                        hover:scale-[1.02]
+                        hover:shadow-xl
+                    "
+                >
+
+                    <i
+                        class="
+                            fa-brands
+                            fa-whatsapp
+                            text-xl
+                        "
+    t-2xl ></i>
+
+                    <span>
+                        Agenda tu cita
+                    </span>
+
+                </a>
+
+            </div>
+
+            <!-- ============================================= -->
+            <!-- MAPA -->
+            <!-- ============================================= -->
+
+            <div class="mt-10">
+
+                <iframe
+                    title="Ubicación SalonDiEliss"
+
+                    loading="lazy"
+                    allowfullscreen
+
+                    class="
+                        w-full
+                        h-72
+
+                        rounded-[28px]
+
+                        border-0
+
+                        shadow-lg
+                    "
+
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d120500.56793422086!2d-99.14126821385297!3d19.297896067912752!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85ce1cc7d5d09bcf%3A0xda7b9c65a92cf8ea!2sSal%C3%B3n%20Di%20Eliss!5e0!3m2!1ses-419!2smx!4v1780945726352!5m2!1ses-419!2smx"
+                >
+                </iframe>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+</html>
+```
