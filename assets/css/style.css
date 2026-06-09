@@ -13,6 +13,36 @@
     box-sizing:border-box;
 }
 
+html{
+
+    color-scheme:light;
+
+}
+
+html[data-theme="dark"]{
+
+    color-scheme:dark;
+
+}
+
+body{
+
+    min-height:100vh;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--color-page-from),
+            var(--color-page-via),
+            var(--color-page-to)
+        );
+
+    transition:
+        background .35s ease,
+        color .35s ease;
+
+}
+
 
 
 /* ==========================================================================
@@ -39,6 +69,74 @@
     --color-card:rgba(255,255,255,.70);
 
     --color-card-border:rgba(255,255,255,.75);
+
+    --color-page-from:#FDF9F8;
+
+    --color-page-via:#F8F1EE;
+
+    --color-page-to:#F2E4DF;
+
+    --color-blob-top:rgba(214,170,160,.35);
+
+    --color-blob-bottom:rgba(214,170,160,.25);
+
+    --color-social-background:#FFFFFF;
+
+    --color-social-text:#A9897E;
+
+    --color-shadow:rgba(0,0,0,.08);
+
+    --color-social-shadow:rgba(0,0,0,.06);
+
+    --color-social-shadow-hover:rgba(0,0,0,.10);
+
+    --color-toggle-background:rgba(255,255,255,.78);
+
+    --color-toggle-border:rgba(255,255,255,.90);
+
+    --color-toggle-track:rgba(214,170,160,.20);
+
+}
+
+[data-theme="dark"]{
+
+    --color-primary:#E0B6AD;
+
+    --color-primary-dark:#C99487;
+
+    --color-text:#F8EEE9;
+
+    --color-text-soft:#DDB8AB;
+
+    --color-card:rgba(36,29,27,.78);
+
+    --color-card-border:rgba(255,255,255,.14);
+
+    --color-page-from:#17100F;
+
+    --color-page-via:#2A1D1A;
+
+    --color-page-to:#3A2925;
+
+    --color-blob-top:rgba(214,170,160,.18);
+
+    --color-blob-bottom:rgba(124,78,68,.28);
+
+    --color-social-background:rgba(255,255,255,.10);
+
+    --color-social-text:#F8EEE9;
+
+    --color-shadow:rgba(0,0,0,.30);
+
+    --color-social-shadow:rgba(0,0,0,.18);
+
+    --color-social-shadow-hover:rgba(0,0,0,.28);
+
+    --color-toggle-background:rgba(255,255,255,.12);
+
+    --color-toggle-border:rgba(255,255,255,.18);
+
+    --color-toggle-track:rgba(0,0,0,.22);
 
 }
 
@@ -77,7 +175,7 @@
     left:-150px;
 
     background:
-        rgba(214,170,160,.35);
+        var(--color-blob-top);
 
 }
 
@@ -87,7 +185,7 @@
     bottom:-150px;
 
     background:
-        rgba(214,170,160,.25);
+        var(--color-blob-bottom);
 
 }
 
@@ -126,10 +224,139 @@
         1px solid var(--color-card-border);
 
     box-shadow:
-        0 20px 60px rgba(0,0,0,.08);
+        0 20px 60px var(--color-shadow);
+
+    transition:
+        background .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease;
 
 }
 
+
+
+
+
+
+/* ==========================================================================
+   SELECTOR DE TEMA
+   ==========================================================================
+
+   Permite alternar entre modo claro y oscuro
+   manteniendo la identidad nude rosé.
+
+   ========================================================================== */
+
+.theme-toggle{
+
+    margin-left:auto;
+    margin-bottom:2rem;
+
+    min-width:132px;
+    height:46px;
+
+    padding:.35rem .65rem;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:.55rem;
+
+    border:1px solid var(--color-toggle-border);
+
+    border-radius:999px;
+
+    background:
+        var(--color-toggle-background);
+
+    color:
+        var(--color-text);
+
+    cursor:pointer;
+
+    box-shadow:
+        0 10px 24px var(--color-social-shadow);
+
+    transition:
+        background .25s ease,
+        border-color .25s ease,
+        color .25s ease,
+        transform .25s ease,
+        box-shadow .25s ease;
+
+}
+
+.theme-toggle:hover{
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 14px 30px var(--color-social-shadow-hover);
+
+}
+
+.theme-toggle__icon{
+
+    width:32px;
+    height:32px;
+
+    display:grid;
+
+    place-items:center;
+
+    border-radius:999px;
+
+    background:
+        var(--color-toggle-track);
+
+    color:
+        var(--color-primary-dark);
+
+    transition:
+        background .25s ease,
+        color .25s ease,
+        opacity .25s ease;
+
+}
+
+.theme-toggle__text{
+
+    min-width:38px;
+
+    font-size:.78rem;
+
+    font-weight:600;
+
+    letter-spacing:.06em;
+
+    text-transform:uppercase;
+
+}
+
+[data-theme="light"] .theme-toggle__icon--dark,
+[data-theme="dark"] .theme-toggle__icon--light{
+
+    opacity:.38;
+
+}
+
+[data-theme="dark"] .theme-toggle__icon--dark,
+[data-theme="light"] .theme-toggle__icon--light{
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--color-primary),
+            var(--color-primary-dark)
+        );
+
+    color:white;
+
+}
 
 
 /* ==========================================================================
@@ -321,9 +548,11 @@
 
     text-decoration:none;
 
-    background:white;
+    background:
+        var(--color-social-background);
 
-    color:#A9897E;
+    color:
+        var(--color-social-text);
 
     font-size:1.15rem;
 
@@ -332,7 +561,7 @@
     letter-spacing:.02em;
 
     box-shadow:
-        0 8px 20px rgba(0,0,0,.06);
+        0 8px 20px var(--color-social-shadow);
 
     transition:
         all .25s ease;
@@ -355,7 +584,7 @@
         var(--color-primary-dark);
 
     box-shadow:
-        0 14px 30px rgba(0,0,0,.10);
+        0 14px 30px var(--color-social-shadow-hover);
 
 }
 
@@ -385,7 +614,7 @@
     overflow:hidden;
 
     box-shadow:
-        0 12px 30px rgba(0,0,0,.08);
+        0 12px 30px var(--color-shadow);
 
 }
 
@@ -459,6 +688,12 @@
         padding:2rem;
 
         border-radius:32px;
+
+    }
+
+    .theme-toggle{
+
+        margin-right:auto;
 
     }
 
