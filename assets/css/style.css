@@ -28,6 +28,8 @@
 
 :root{
 
+    color-scheme:light;
+
     --color-primary:#D6AAA0;
 
     --color-primary-dark:#C99487;
@@ -39,6 +41,83 @@
     --color-card:rgba(255,255,255,.70);
 
     --color-card-border:rgba(255,255,255,.75);
+
+    --color-social-bg:rgba(255,255,255,.92);
+
+    --color-social-text:#A9897E;
+
+    --color-focus:#C99487;
+
+    --color-page-start:#FDF9F8;
+
+    --color-page-middle:#F8F1EE;
+
+    --color-page-end:#F2E4DF;
+
+    --color-blob:rgba(214,170,160,.35);
+
+    --color-blob-soft:rgba(214,170,160,.25);
+
+    --color-shadow:rgba(0,0,0,.08);
+
+    --color-shadow-strong:rgba(0,0,0,.10);
+
+}
+
+html[data-theme="dark"]{
+
+    color-scheme:dark;
+
+    --color-primary:#D6AAA0;
+
+    --color-primary-dark:#E8C3BA;
+
+    --color-text:#F8EDEA;
+
+    --color-text-soft:#D8BBB3;
+
+    --color-card:rgba(41,31,36,.78);
+
+    --color-card-border:rgba(255,255,255,.12);
+
+    --color-social-bg:rgba(255,255,255,.10);
+
+    --color-social-text:#F1D8D1;
+
+    --color-focus:#F0C7BD;
+
+    --color-page-start:#140F13;
+
+    --color-page-middle:#241820;
+
+    --color-page-end:#35242B;
+
+    --color-blob:rgba(214,170,160,.22);
+
+    --color-blob-soft:rgba(151,95,118,.32);
+
+    --color-shadow:rgba(0,0,0,.34);
+
+    --color-shadow-strong:rgba(0,0,0,.42);
+
+}
+
+body{
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--color-page-start),
+            var(--color-page-middle),
+            var(--color-page-end)
+        );
+
+    color:
+        var(--color-text);
+
+    transition:
+        background .35s ease,
+        color .35s ease;
 
 }
 
@@ -77,7 +156,7 @@
     left:-150px;
 
     background:
-        rgba(214,170,160,.35);
+        var(--color-blob);
 
 }
 
@@ -87,7 +166,7 @@
     bottom:-150px;
 
     background:
-        rgba(214,170,160,.25);
+        var(--color-blob-soft);
 
 }
 
@@ -126,7 +205,125 @@
         1px solid var(--color-card-border);
 
     box-shadow:
-        0 20px 60px rgba(0,0,0,.08);
+        0 20px 60px var(--color-shadow);
+
+    transition:
+        background .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease;
+
+}
+
+
+
+/* ==========================================================================
+   SELECTOR DE TEMA
+   ==========================================================================
+
+   Botón para alternar entre modo claro y oscuro.
+
+   ========================================================================== */
+
+.theme-toggle-wrapper{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    margin-bottom:1.5rem;
+
+}
+
+.theme-toggle{
+
+    min-height:44px;
+
+    padding:.35rem .45rem .35rem .85rem;
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:.65rem;
+
+    border:none;
+
+    border-radius:999px;
+
+    cursor:pointer;
+
+    color:var(--color-social-text);
+
+    background:var(--color-social-bg);
+
+    box-shadow:
+        0 8px 20px var(--color-shadow);
+
+    transition:
+        background .25s ease,
+        color .25s ease,
+        transform .25s ease,
+        box-shadow .25s ease;
+
+}
+
+.theme-toggle:hover{
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 12px 28px var(--color-shadow-strong);
+
+}
+
+.theme-toggle__icon{
+
+    width:34px;
+    height:34px;
+
+    display:grid;
+
+    place-items:center;
+
+    border-radius:999px;
+
+    color:white;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--color-primary),
+            var(--color-primary-dark)
+        );
+
+}
+
+.theme-toggle__icon--moon{
+
+    display:none;
+
+}
+
+.theme-toggle__text{
+
+    font-size:.8rem;
+
+    font-weight:600;
+
+    letter-spacing:.03em;
+
+}
+
+html[data-theme="dark"] .theme-toggle__icon--sun{
+
+    display:none;
+
+}
+
+html[data-theme="dark"] .theme-toggle__icon--moon{
+
+    display:grid;
 
 }
 
@@ -158,6 +355,9 @@
     color:
         var(--color-text);
 
+    transition:
+        color .35s ease;
+
 }
 
 .brand-subtitle{
@@ -176,6 +376,9 @@
 
     color:
         var(--color-text-soft);
+
+    transition:
+        color .35s ease;
 
 }
 
@@ -321,9 +524,9 @@
 
     text-decoration:none;
 
-    background:white;
+    background:var(--color-social-bg);
 
-    color:#A9897E;
+    color:var(--color-social-text);
 
     font-size:1.15rem;
 
@@ -332,10 +535,12 @@
     letter-spacing:.02em;
 
     box-shadow:
-        0 8px 20px rgba(0,0,0,.06);
+        0 8px 20px var(--color-shadow);
 
     transition:
-        all .25s ease;
+        all .25s ease,
+        background .35s ease,
+        color .35s ease;
 
 }
 
@@ -355,7 +560,7 @@
         var(--color-primary-dark);
 
     box-shadow:
-        0 14px 30px rgba(0,0,0,.10);
+        0 14px 30px var(--color-shadow-strong);
 
 }
 
@@ -385,7 +590,21 @@
     overflow:hidden;
 
     box-shadow:
-        0 12px 30px rgba(0,0,0,.08);
+        0 12px 30px var(--color-shadow);
+
+    filter:
+        saturate(.95);
+
+    transition:
+        box-shadow .35s ease,
+        filter .35s ease;
+
+}
+
+html[data-theme="dark"] .map{
+
+    filter:
+        grayscale(.2) invert(.88) hue-rotate(180deg) saturate(.75);
 
 }
 
@@ -402,7 +621,7 @@
 *:focus-visible{
 
     outline:
-        3px solid var(--color-primary);
+        3px solid var(--color-focus);
 
     outline-offset:
         4px;
@@ -459,6 +678,12 @@
         padding:2rem;
 
         border-radius:32px;
+
+    }
+
+    .theme-toggle-wrapper{
+
+        justify-content:center;
 
     }
 

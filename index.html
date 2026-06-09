@@ -70,7 +70,7 @@
 
     <meta
         name="theme-color"
-        content="#D6AAA0"
+        content="#F8F1EE"
     >
 
     <!-- ========================================================= -->
@@ -180,10 +180,6 @@
         font-body
         min-h-screen
         overflow-x-hidden
-        bg-gradient-to-br
-        from-[#FDF9F8]
-        via-[#F8F1EE]
-        to-[#F2E4DF]
     "
 >
 
@@ -215,6 +211,34 @@
         <!-- ===================================================== -->
 
         <section class="card">
+
+            <!-- ================================================= -->
+            <!-- SELECTOR DE TEMA -->
+            <!-- ================================================= -->
+
+            <div class="theme-toggle-wrapper">
+
+                <button
+                    type="button"
+                    class="theme-toggle"
+                    aria-label="Cambiar a modo oscuro"
+                    aria-pressed="false"
+                    data-theme-toggle
+                >
+                    <span class="theme-toggle__icon theme-toggle__icon--sun">
+                        <i class="fa-solid fa-sun"></i>
+                    </span>
+
+                    <span class="theme-toggle__icon theme-toggle__icon--moon">
+                        <i class="fa-solid fa-moon"></i>
+                    </span>
+
+                    <span class="theme-toggle__text">
+                        Modo claro
+                    </span>
+                </button>
+
+            </div>
 
             <!-- ================================================= -->
             <!-- LOGOTIPO -->

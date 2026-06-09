@@ -42,9 +42,168 @@ function initializeApp(){
         "color:#888;"
     );
 
+    initializeThemeToggle();
+
     initializeAnimations();
 
     initializeButtonEffects();
+
+}
+
+
+
+/* ==========================================================================
+   SELECTOR DE TEMA
+
+   Permite alternar entre modo claro y oscuro,
+   recordando la preferencia del visitante.
+
+   ========================================================================== */
+
+function initializeThemeToggle(){
+
+    const themeToggle =
+        document.querySelector(
+            "[data-theme-toggle]"
+        );
+
+    const themeText =
+        themeToggle?.querySelector(
+            ".theme-toggle__text"
+        );
+
+    const themeColorMeta =
+        document.querySelector(
+            'meta[name="theme-color"]'
+        );
+
+    const preferredTheme =
+        getPreferredTheme();
+
+    applyTheme(
+        preferredTheme,
+        themeToggle,
+        themeText,
+        themeColorMeta
+    );
+
+    if(!themeToggle) return;
+
+
+
+    themeToggle.addEventListener(
+
+        "click",
+
+        () => {
+
+            const currentTheme =
+                document.documentElement.dataset.theme ||
+                "light";
+
+            const nextTheme =
+                currentTheme === "dark"
+                    ? "light"
+                    : "dark";
+
+            localStorage.setItem(
+                "salondieliss-theme",
+                nextTheme
+            );
+
+            applyTheme(
+                nextTheme,
+                themeToggle,
+                themeText,
+                themeColorMeta
+            );
+
+        }
+
+    );
+
+}
+
+
+
+function getPreferredTheme(){
+
+    const savedTheme =
+        localStorage.getItem(
+            "salondieliss-theme"
+        );
+
+    if(savedTheme){
+
+        return savedTheme;
+
+    }
+
+
+
+    const prefersDarkMode =
+        window.matchMedia(
+            "(prefers-color-scheme: dark)"
+        ).matches;
+
+    return prefersDarkMode
+        ? "dark"
+        : "light";
+
+}
+
+
+
+function applyTheme(
+    theme,
+    themeToggle,
+    themeText,
+    themeColorMeta
+){
+
+    const isDarkTheme =
+        theme === "dark";
+
+    document.documentElement.dataset.theme =
+        isDarkTheme
+            ? "dark"
+            : "light";
+
+    if(themeToggle){
+
+        themeToggle.setAttribute(
+            "aria-pressed",
+            String(isDarkTheme)
+        );
+
+        themeToggle.setAttribute(
+            "aria-label",
+            isDarkTheme
+                ? "Cambiar a modo claro"
+                : "Cambiar a modo oscuro"
+        );
+
+    }
+
+    if(themeText){
+
+        themeText.textContent =
+            isDarkTheme
+                ? "Modo oscuro"
+                : "Modo claro";
+
+    }
+
+    if(themeColorMeta){
+
+        themeColorMeta.setAttribute(
+            "content",
+            isDarkTheme
+                ? "#140F13"
+                : "#F8F1EE"
+        );
+
+    }
 
 }
 
