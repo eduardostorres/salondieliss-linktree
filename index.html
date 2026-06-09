@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es-MX">
+<html lang="es-MX" data-theme="light">
 
 <head>
 
@@ -15,6 +15,32 @@
     >
 
     <title>SalonDiEliss | By Elisa Torres</title>
+
+    <!-- ========================================================= -->
+    <!-- TEMA INICIAL -->
+    <!-- ========================================================= -->
+
+    <script>
+
+        const savedTheme =
+            localStorage.getItem(
+                "salondieliss-theme"
+            );
+
+        const prefersDarkTheme =
+            window.matchMedia(
+                "(prefers-color-scheme: dark)"
+            ).matches;
+
+        const initialTheme =
+            savedTheme || (prefersDarkTheme ? "dark" : "light");
+
+        document.documentElement.setAttribute(
+            "data-theme",
+            initialTheme
+        );
+
+    </script>
 
     <!-- ========================================================= -->
     <!-- SEO -->
@@ -70,7 +96,7 @@
 
     <meta
         name="theme-color"
-        content="#D6AAA0"
+        content="#FDF9F8"
     >
 
     <!-- ========================================================= -->
@@ -194,6 +220,25 @@
     <div class="background-blob top-blob"></div>
 
     <div class="background-blob bottom-blob"></div>
+
+    <!-- ========================================================= -->
+    <!-- SELECTOR DE TEMA -->
+    <!-- ========================================================= -->
+
+    <button
+        class="theme-toggle"
+        type="button"
+        aria-label="Activar modo oscuro"
+        aria-pressed="false"
+    >
+        <span class="theme-toggle__icon" aria-hidden="true">
+            <i class="fa-solid fa-moon"></i>
+        </span>
+
+        <span class="theme-toggle__text">
+            Modo oscuro
+        </span>
+    </button>
 
     <!-- ========================================================= -->
     <!-- CONTENIDO PRINCIPAL -->

@@ -42,12 +42,123 @@ function initializeApp(){
         "color:#888;"
     );
 
+    initializeThemeToggle();
+
     initializeAnimations();
 
     initializeButtonEffects();
 
 }
 
+
+
+
+
+/* ========================================================================== 
+   SELECTOR DE TEMA
+
+   Permite alternar entre light mode y dark mode.
+   La elección se guarda localmente para mantener
+   la preferencia en futuras visitas.
+
+   ========================================================================== */
+
+function initializeThemeToggle(){
+
+    const themeToggle =
+        document.querySelector(".theme-toggle");
+
+    const themeIcon =
+        document.querySelector(".theme-toggle__icon i");
+
+    const themeText =
+        document.querySelector(".theme-toggle__text");
+
+    const themeColorMeta =
+        document.querySelector("meta[name='theme-color']");
+
+    if(!themeToggle) return;
+
+
+
+    const updateThemeControls = theme => {
+
+        const isDarkMode =
+            theme === "dark";
+
+        themeToggle.setAttribute(
+            "aria-pressed",
+            String(isDarkMode)
+        );
+
+        themeToggle.setAttribute(
+            "aria-label",
+            isDarkMode ? "Activar modo claro" : "Activar modo oscuro"
+        );
+
+        if(themeIcon){
+
+            themeIcon.className =
+                isDarkMode ? "fa-solid fa-sun" : "fa-solid fa-moon";
+
+        }
+
+        if(themeText){
+
+            themeText.textContent =
+                isDarkMode ? "Modo claro" : "Modo oscuro";
+
+        }
+
+        if(themeColorMeta){
+
+            themeColorMeta.setAttribute(
+                "content",
+                isDarkMode ? "#120D12" : "#FDF9F8"
+            );
+
+        }
+
+    };
+
+
+
+    const currentTheme =
+        document.documentElement.getAttribute("data-theme") || "light";
+
+    updateThemeControls(currentTheme);
+
+
+
+    themeToggle.addEventListener(
+
+        "click",
+
+        () => {
+
+            const activeTheme =
+                document.documentElement.getAttribute("data-theme") || "light";
+
+            const nextTheme =
+                activeTheme === "dark" ? "light" : "dark";
+
+            document.documentElement.setAttribute(
+                "data-theme",
+                nextTheme
+            );
+
+            localStorage.setItem(
+                "salondieliss-theme",
+                nextTheme
+            );
+
+            updateThemeControls(nextTheme);
+
+        }
+
+    );
+
+}
 
 
 /* ==========================================================================
