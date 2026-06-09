@@ -71,6 +71,12 @@
     <meta
         name="theme-color"
         content="#D6AAA0"
+        id="theme-color-meta"
+    >
+
+    <meta
+        name="color-scheme"
+        content="light dark"
     >
 
     <!-- ========================================================= -->
@@ -160,6 +166,23 @@
     </script>
 
     <!-- ========================================================= -->
+    <!-- TEMA INICIAL -->
+    <!-- ========================================================= -->
+
+    <script>
+
+        const savedTheme =
+            localStorage.getItem('salondieliss-theme');
+
+        const prefersDarkTheme =
+            window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        document.documentElement.dataset.theme =
+            savedTheme || (prefersDarkTheme ? 'dark' : 'light');
+
+    </script>
+
+    <!-- ========================================================= -->
     <!-- ESTILOS PROPIOS -->
     <!-- ========================================================= -->
 
@@ -180,10 +203,6 @@
         font-body
         min-h-screen
         overflow-x-hidden
-        bg-gradient-to-br
-        from-[#FDF9F8]
-        via-[#F8F1EE]
-        to-[#F2E4DF]
     "
 >
 
@@ -215,6 +234,29 @@
         <!-- ===================================================== -->
 
         <section class="card">
+
+            <!-- ================================================= -->
+            <!-- SELECTOR DE TEMA -->
+            <!-- ================================================= -->
+
+            <button
+                class="theme-toggle"
+                type="button"
+                aria-label="Cambiar a modo oscuro"
+                aria-pressed="false"
+            >
+                <span class="theme-toggle__icon theme-toggle__icon--light">
+                    <i class="fa-solid fa-sun"></i>
+                </span>
+
+                <span class="theme-toggle__text">
+                    Light
+                </span>
+
+                <span class="theme-toggle__icon theme-toggle__icon--dark">
+                    <i class="fa-solid fa-moon"></i>
+                </span>
+            </button>
 
             <!-- ================================================= -->
             <!-- LOGOTIPO -->
