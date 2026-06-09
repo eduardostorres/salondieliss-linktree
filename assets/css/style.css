@@ -15,18 +15,19 @@
 
 
 
-/* ==========================================================================
-   VARIABLES DEL SISTEMA DE DISEÑO
-   ==========================================================================
 
-   Paleta Nude Rosé utilizada en toda la identidad visual.
+/* =======================================================================
+   MODOS DE COLOR
+   =======================================================================
 
-   Si deseas cambiar la línea gráfica,
-   modifica únicamente estas variables.
+   Define los tokens para light mode y dark mode.
+   JavaScript cambia el atributo data-theme del documento.
 
-   ========================================================================== */
+   ======================================================================= */
 
 :root{
+
+    color-scheme:light;
 
     --color-primary:#D6AAA0;
 
@@ -40,8 +41,117 @@
 
     --color-card-border:rgba(255,255,255,.75);
 
+    --color-page-from:#FDF9F8;
+
+    --color-page-via:#F8F1EE;
+
+    --color-page-to:#F2E4DF;
+
+    --color-blob:rgba(214,170,160,.35);
+
+    --color-blob-soft:rgba(214,170,160,.25);
+
+    --color-button:#FFFFFF;
+
+    --color-button-text:#A9897E;
+
+    --color-focus:#C99487;
+
+    --shadow-card:0 20px 60px rgba(0,0,0,.08);
+
+    --shadow-button:0 8px 20px rgba(0,0,0,.06);
+
+    --shadow-button-hover:0 14px 30px rgba(0,0,0,.10);
+
+    --shadow-map:0 12px 30px rgba(0,0,0,.08);
+
 }
 
+:root[data-theme="dark"]{
+
+    color-scheme:dark;
+
+    --color-primary:#E8B9AD;
+
+    --color-primary-dark:#C99487;
+
+    --color-text:#F7E9E5;
+
+    --color-text-soft:#D8BDB5;
+
+    --color-card:rgba(36,28,34,.76);
+
+    --color-card-border:rgba(255,255,255,.14);
+
+    --color-page-from:#120D12;
+
+    --color-page-via:#211820;
+
+    --color-page-to:#3A252C;
+
+    --color-blob:rgba(232,185,173,.22);
+
+    --color-blob-soft:rgba(143,92,109,.30);
+
+    --color-button:rgba(255,255,255,.10);
+
+    --color-button-text:#F5DAD3;
+
+    --color-focus:#F2C8BE;
+
+    --shadow-card:0 24px 70px rgba(0,0,0,.35);
+
+    --shadow-button:0 10px 24px rgba(0,0,0,.24);
+
+    --shadow-button-hover:0 16px 34px rgba(0,0,0,.34);
+
+    --shadow-map:0 16px 36px rgba(0,0,0,.35);
+
+}
+
+
+/* ==========================================================================
+   BASE DEL DOCUMENTO
+   ========================================================================== */
+
+html{
+
+    min-height:100%;
+
+}
+
+body{
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--color-page-from),
+            var(--color-page-via),
+            var(--color-page-to)
+        ) !important;
+
+    color:
+        var(--color-text);
+
+    transition:
+        background .35s ease,
+        color .35s ease;
+
+}
+
+.card,
+.social-button,
+.theme-toggle,
+.map{
+
+    transition:
+        background .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease,
+        color .25s ease,
+        transform .25s ease;
+
+}
 
 
 /* ==========================================================================
@@ -77,7 +187,7 @@
     left:-150px;
 
     background:
-        rgba(214,170,160,.35);
+        var(--color-blob);
 
 }
 
@@ -87,10 +197,100 @@
     bottom:-150px;
 
     background:
-        rgba(214,170,160,.25);
+        var(--color-blob-soft);
 
 }
 
+
+
+
+
+/* ==========================================================================
+   SELECTOR DE TEMA
+   ==========================================================================
+
+   Botón flotante para alternar entre light mode y dark mode.
+
+   ========================================================================== */
+
+.theme-toggle{
+
+    position:fixed;
+
+    top:1.25rem;
+    right:1.25rem;
+
+    z-index:10;
+
+    min-height:46px;
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:.55rem;
+
+    padding:.6rem 1rem;
+
+    border:1px solid var(--color-card-border);
+
+    border-radius:999px;
+
+    background:
+        var(--color-card);
+
+    backdrop-filter:
+        blur(18px);
+
+    color:
+        var(--color-text);
+
+    font-size:.78rem;
+
+    font-weight:600;
+
+    letter-spacing:.05em;
+
+    text-transform:uppercase;
+
+    box-shadow:
+        var(--shadow-button);
+
+    cursor:pointer;
+
+}
+
+.theme-toggle:hover{
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        var(--shadow-button-hover);
+
+}
+
+.theme-toggle__icon{
+
+    width:1.6rem;
+    height:1.6rem;
+
+    display:grid;
+
+    place-items:center;
+
+    border-radius:999px;
+
+    color:white;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--color-primary),
+            var(--color-primary-dark)
+        );
+
+}
 
 
 /* ==========================================================================
@@ -126,7 +326,7 @@
         1px solid var(--color-card-border);
 
     box-shadow:
-        0 20px 60px rgba(0,0,0,.08);
+        var(--shadow-card);
 
 }
 
@@ -321,9 +521,11 @@
 
     text-decoration:none;
 
-    background:white;
+    background:
+        var(--color-button);
 
-    color:#A9897E;
+    color:
+        var(--color-button-text);
 
     font-size:1.15rem;
 
@@ -332,7 +534,7 @@
     letter-spacing:.02em;
 
     box-shadow:
-        0 8px 20px rgba(0,0,0,.06);
+        var(--shadow-button);
 
     transition:
         all .25s ease;
@@ -355,7 +557,7 @@
         var(--color-primary-dark);
 
     box-shadow:
-        0 14px 30px rgba(0,0,0,.10);
+        var(--shadow-button-hover);
 
 }
 
@@ -385,7 +587,7 @@
     overflow:hidden;
 
     box-shadow:
-        0 12px 30px rgba(0,0,0,.08);
+        var(--shadow-map);
 
 }
 
@@ -402,7 +604,7 @@
 *:focus-visible{
 
     outline:
-        3px solid var(--color-primary);
+        3px solid var(--color-focus);
 
     outline-offset:
         4px;
@@ -481,6 +683,21 @@
     .map{
 
         height:240px;
+
+    }
+
+    .theme-toggle{
+
+        top:.85rem;
+        right:.85rem;
+
+        padding:.55rem .85rem;
+
+    }
+
+    .theme-toggle__text{
+
+        display:none;
 
     }
 
