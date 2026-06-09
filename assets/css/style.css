@@ -110,7 +110,7 @@
 
     width:100%;
 
-    max-width:480px;
+    max-width:640px;
 
     padding:2.5rem;
 
@@ -264,87 +264,6 @@
 
 
 /* ==========================================================================
-   CONTENEDOR DE REDES SOCIALES
-   ==========================================================================
-
-   Mantiene una distribución horizontal
-   uniforme para todos los iconos.
-
-   ========================================================================== */
-
-.social-container{
-
-    margin-top:2rem;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    gap:1rem;
-
-}
-
-
-
-/* ==========================================================================
-   BOTONES SOCIALES
-   ==========================================================================
-
-   Diseño minimalista premium.
-
-   Se utilizan únicamente iconos para
-   reducir ruido visual.
-
-   ========================================================================== */
-
-.social-button{
-
-    width:56px;
-
-    height:56px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    border-radius:999px;
-
-    text-decoration:none;
-
-    background:white;
-
-    color:#A9897E;
-
-    font-size:1.15rem;
-
-    box-shadow:
-        0 8px 20px rgba(0,0,0,.06);
-
-    transition:
-        all .25s ease;
-
-}
-
-.social-button:hover{
-
-    transform:
-        translateY(-4px);
-
-    color:
-        var(--color-primary-dark);
-
-    box-shadow:
-        0 14px 30px rgba(0,0,0,.10);
-
-}
-
-
-
-/* ==========================================================================
    MAPA
    ==========================================================================
 
@@ -442,14 +361,6 @@
         padding:2rem;
 
         border-radius:32px;
-
-    }
-
-    .social-button{
-
-        width:52px;
-
-        height:52px;
 
     }
 
