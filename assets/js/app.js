@@ -42,9 +42,133 @@ function initializeApp(){
         "color:#888;"
     );
 
+    initializeThemeToggle();
+
     initializeAnimations();
 
     initializeButtonEffects();
+
+}
+
+
+
+/* ==========================================================================
+   SELECTOR DE TEMA
+
+   Permite cambiar entre modo claro y oscuro.
+   Guarda la preferencia en localStorage y respeta
+   la configuración del sistema cuando no existe una preferencia previa.
+
+   ========================================================================== */
+
+function initializeThemeToggle(){
+
+    const themeToggle =
+        document.querySelector(
+            "[data-theme-toggle]"
+        );
+
+    if(!themeToggle) return;
+
+    const storedTheme =
+        localStorage.getItem(
+            "salondieliss-theme"
+        );
+
+    const prefersDark =
+        window.matchMedia(
+            "(prefers-color-scheme: dark)"
+        ).matches;
+
+    const initialTheme =
+        storedTheme || (prefersDark ? "dark" : "light");
+
+    setTheme(
+        initialTheme,
+        themeToggle
+    );
+
+
+
+    themeToggle.addEventListener(
+
+        "click",
+
+        () => {
+
+            const currentTheme =
+                document.documentElement.dataset.theme || "light";
+
+            const nextTheme =
+                currentTheme === "dark" ? "light" : "dark";
+
+            setTheme(
+                nextTheme,
+                themeToggle
+            );
+
+            localStorage.setItem(
+                "salondieliss-theme",
+                nextTheme
+            );
+
+        }
+
+    );
+
+}
+
+
+
+/* ==========================================================================
+   APLICAR TEMA
+
+   Centraliza los textos accesibles y el color
+   de barra del navegador para cada modo.
+
+   ========================================================================== */
+
+function setTheme(
+    theme,
+    themeToggle
+){
+
+    const isDarkTheme =
+        theme === "dark";
+
+    document.documentElement.dataset.theme =
+        isDarkTheme ? "dark" : "light";
+
+    document
+        .querySelector(
+            'meta[name="theme-color"]'
+        )
+        ?.setAttribute(
+            "content",
+            isDarkTheme ? "#21171C" : "#D6AAA0"
+        );
+
+    themeToggle.setAttribute(
+        "aria-pressed",
+        String(isDarkTheme)
+    );
+
+    themeToggle.setAttribute(
+        "aria-label",
+        isDarkTheme ? "Cambiar a modo claro" : "Cambiar a modo oscuro"
+    );
+
+    const themeToggleText =
+        themeToggle.querySelector(
+            ".theme-toggle__text"
+        );
+
+    if(themeToggleText){
+
+        themeToggleText.textContent =
+            isDarkTheme ? "Modo claro" : "Modo oscuro";
+
+    }
 
 }
 

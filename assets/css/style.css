@@ -40,6 +40,111 @@
 
     --color-card-border:rgba(255,255,255,.75);
 
+    --color-social-bg:#FFFFFF;
+
+    --color-social-text:#A9897E;
+
+    --color-focus:#D6AAA0;
+
+    --color-background-start:#FDF9F8;
+
+    --color-background-middle:#F8F1EE;
+
+    --color-background-end:#F2E4DF;
+
+    --color-blob-top:rgba(214,170,160,.35);
+
+    --color-blob-bottom:rgba(214,170,160,.25);
+
+    --shadow-card:0 20px 60px rgba(0,0,0,.08);
+
+    --shadow-social:0 8px 20px rgba(0,0,0,.06);
+
+    --shadow-social-hover:0 14px 30px rgba(0,0,0,.10);
+
+    --shadow-map:0 12px 30px rgba(0,0,0,.08);
+
+    color-scheme:light;
+
+}
+
+[data-theme="dark"]{
+
+    --color-primary:#E7BDB4;
+
+    --color-primary-dark:#C99487;
+
+    --color-text:#FFF3EF;
+
+    --color-text-soft:#D9BBB2;
+
+    --color-card:rgba(38,28,32,.78);
+
+    --color-card-border:rgba(255,255,255,.12);
+
+    --color-social-bg:rgba(255,255,255,.09);
+
+    --color-social-text:#F5D8D0;
+
+    --color-focus:#F0C6BD;
+
+    --color-background-start:#120D11;
+
+    --color-background-middle:#21171C;
+
+    --color-background-end:#3A2728;
+
+    --color-blob-top:rgba(214,170,160,.20);
+
+    --color-blob-bottom:rgba(120,71,82,.34);
+
+    --shadow-card:0 24px 70px rgba(0,0,0,.42);
+
+    --shadow-social:0 10px 26px rgba(0,0,0,.24);
+
+    --shadow-social-hover:0 16px 34px rgba(0,0,0,.32);
+
+    --shadow-map:0 14px 34px rgba(0,0,0,.28);
+
+    color-scheme:dark;
+
+}
+
+
+
+/* ==========================================================================
+   TEMA GLOBAL
+   ==========================================================================
+
+   Define el fondo principal y transiciones
+   para alternar entre modo claro y oscuro.
+
+   ========================================================================== */
+
+html{
+
+    background:
+        var(--color-background-start);
+
+}
+
+body{
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--color-background-start),
+            var(--color-background-middle),
+            var(--color-background-end)
+        ) !important;
+
+    color:
+        var(--color-text);
+
+    transition:
+        background .35s ease,
+        color .35s ease;
+
 }
 
 
@@ -77,7 +182,7 @@
     left:-150px;
 
     background:
-        rgba(214,170,160,.35);
+        var(--color-blob-top);
 
 }
 
@@ -87,7 +192,120 @@
     bottom:-150px;
 
     background:
-        rgba(214,170,160,.25);
+        var(--color-blob-bottom);
+
+}
+
+
+
+/* ==========================================================================
+   SELECTOR DE TEMA
+   ==========================================================================
+
+   Botón flotante para alternar entre modo claro y oscuro.
+
+   ========================================================================== */
+
+.theme-toggle{
+
+    position:fixed;
+
+    top:1.25rem;
+    right:1.25rem;
+
+    min-height:48px;
+
+    padding:.55rem .9rem;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:.55rem;
+
+    border:1px solid var(--color-card-border);
+
+    border-radius:999px;
+
+    background:
+        var(--color-card);
+
+    color:
+        var(--color-text);
+
+    backdrop-filter:
+        blur(18px);
+
+    box-shadow:
+        var(--shadow-social);
+
+    cursor:pointer;
+
+    z-index:10;
+
+    transition:
+        transform .25s ease,
+        background .35s ease,
+        color .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease;
+
+}
+
+.theme-toggle:hover{
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        var(--shadow-social-hover);
+
+}
+
+.theme-toggle__icon{
+
+    width:28px;
+    height:28px;
+
+    display:grid;
+
+    place-items:center;
+
+    border-radius:999px;
+
+    background:
+        rgba(214,170,160,.18);
+
+    color:
+        var(--color-primary-dark);
+
+}
+
+.theme-toggle__icon--moon{
+
+    display:none;
+
+}
+
+[data-theme="dark"] .theme-toggle__icon--sun{
+
+    display:none;
+
+}
+
+[data-theme="dark"] .theme-toggle__icon--moon{
+
+    display:grid;
+
+}
+
+.theme-toggle__text{
+
+    font-size:.82rem;
+
+    font-weight:600;
+
+    letter-spacing:.02em;
 
 }
 
@@ -126,7 +344,12 @@
         1px solid var(--color-card-border);
 
     box-shadow:
-        0 20px 60px rgba(0,0,0,.08);
+        var(--shadow-card);
+
+    transition:
+        background .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease;
 
 }
 
@@ -321,9 +544,11 @@
 
     text-decoration:none;
 
-    background:white;
+    background:
+        var(--color-social-bg);
 
-    color:#A9897E;
+    color:
+        var(--color-social-text);
 
     font-size:1.15rem;
 
@@ -332,10 +557,12 @@
     letter-spacing:.02em;
 
     box-shadow:
-        0 8px 20px rgba(0,0,0,.06);
+        var(--shadow-social);
 
     transition:
-        all .25s ease;
+        all .25s ease,
+        background .35s ease,
+        color .35s ease;
 
 }
 
@@ -355,7 +582,7 @@
         var(--color-primary-dark);
 
     box-shadow:
-        0 14px 30px rgba(0,0,0,.10);
+        var(--shadow-social-hover);
 
 }
 
@@ -385,7 +612,7 @@
     overflow:hidden;
 
     box-shadow:
-        0 12px 30px rgba(0,0,0,.08);
+        var(--shadow-map);
 
 }
 
@@ -402,7 +629,7 @@
 *:focus-visible{
 
     outline:
-        3px solid var(--color-primary);
+        3px solid var(--color-focus);
 
     outline-offset:
         4px;
@@ -453,6 +680,34 @@
    ========================================================================== */
 
 @media (max-width:640px){
+
+    .theme-toggle{
+
+        top:.85rem;
+        right:.85rem;
+
+        padding:.55rem;
+
+    }
+
+    .theme-toggle__text{
+
+        position:absolute;
+
+        width:1px;
+        height:1px;
+
+        padding:0;
+
+        overflow:hidden;
+
+        clip:rect(0,0,0,0);
+
+        white-space:nowrap;
+
+        border:0;
+
+    }
 
     .card{
 

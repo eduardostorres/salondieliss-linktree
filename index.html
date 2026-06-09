@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es-MX">
+<html lang="es-MX" data-theme="light">
 
 <head>
 
@@ -71,6 +71,11 @@
     <meta
         name="theme-color"
         content="#D6AAA0"
+    >
+
+    <meta
+        name="color-scheme"
+        content="light dark"
     >
 
     <!-- ========================================================= -->
@@ -194,6 +199,30 @@
     <div class="background-blob top-blob"></div>
 
     <div class="background-blob bottom-blob"></div>
+
+    <!-- ========================================================= -->
+    <!-- SELECTOR DE TEMA -->
+    <!-- ========================================================= -->
+
+    <button
+        class="theme-toggle"
+        type="button"
+        aria-label="Cambiar a modo oscuro"
+        aria-pressed="false"
+        data-theme-toggle
+    >
+        <span class="theme-toggle__icon theme-toggle__icon--sun">
+            <i class="fa-solid fa-sun"></i>
+        </span>
+
+        <span class="theme-toggle__icon theme-toggle__icon--moon">
+            <i class="fa-solid fa-moon"></i>
+        </span>
+
+        <span class="theme-toggle__text">
+            Modo oscuro
+        </span>
+    </button>
 
     <!-- ========================================================= -->
     <!-- CONTENIDO PRINCIPAL -->
